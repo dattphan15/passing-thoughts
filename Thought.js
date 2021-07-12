@@ -7,7 +7,7 @@ export function Thought(props) {
     // calculates time until thought expires
     const timeRemaining = thought.expiresAt - Date.now();
     const timeout = setTimeout(() => {
-      alert('Time has passed!')
+      removeThought(thought.id)
     }, timeRemaining)
     // clears timeout
     return () => {clearTimeout(timeout)}
