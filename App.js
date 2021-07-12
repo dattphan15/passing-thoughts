@@ -22,6 +22,11 @@ function App() {
     setThoughts((prev) => [thought, ...prev]);
   }
 
+  const removeThought = (thoughtIdToRemove) => {
+    // keeps all thoughts that don't match the thought.id being removed
+    setThoughts((prev) => prev.filter(thought => (thought.id !== thoughtIdToRemove)))
+  }
+
   return (
     <div className="App">
       <header>
@@ -31,7 +36,7 @@ function App() {
         <AddThoughtForm addThought={addThought}/>
         <ul className="thoughts">
           {thoughts.map((thought) => (
-            <Thought key={thought.id} thought={thought} />
+            <Thought key={thought.id} thought={thought} removeThought={removeThought}/>
           ))}
         </ul>
       </main>
